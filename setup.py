@@ -1,24 +1,25 @@
-#!/usr/bin/env python
+import os, distribute_setup
+distribute_setup.use_setuptools()
 from setuptools import setup, find_packages
 
-VERSION = '0.2.0' 
-
-README_FILE = open('README')
-try:
-    long_description = README_FILE.read()
-finally:
-    README_FILE.close()
+readme = os.path.join(os.path.dirname(__file__), 'README')
+long_description = open(readme).read()
 
 setup(
-    name='python-postmark',
-    version=VERSION,
-    url='http://github.com/squarefactor/python-postmark.git',
-    description='Python interface for the Postmark API http://postmarkapp.com',
-    long_description=long_description,
-    author='Dave Martorana',
-    platforms=['any'],
-    packages = find_packages('src'),
-    package_dir = {'': 'src'},
-    install_requires = ['setuptools'],
+    name = "python-postmark",
+    version = "0.2.0",
+    packages = find_packages(),
+    
+    author = "Dave Martorana & Richard Cooper",
+    # license = 'BSD',
+    description = "Postmark library for Python 2.4 and greater.",
+    long_description = long_description,
+    url = "http://github.com/themartorana/python-postmark",
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+    ]
 )
-
